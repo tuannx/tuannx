@@ -1,57 +1,75 @@
-# Hi, I'm Tony Nguyen
+# Tony Nguyen
 
-Open-source contributor focused on software architecture analysis, AI agent tooling, and reliable JVM infrastructure.
+**Senior Software Engineer** · Java · AWS · reliable systems at scale · tools for AI coding agents
 
-I work on reproducible bug reports, focused fixes, and integration tests that exercise real protocols.
-
-## Selected upstream contributions
-
-The contributions below are merged upstream. Open proposals are listed separately.
-
-### [Arcade Agent](https://github.com/lemduc/arcade-agent) · architecture analysis & developer tooling
-
-14 merged pull requests spanning parsers, analysis, performance, and CI:
-
-- **Language support:** [Kotlin parser and regression fixtures (#17)](https://github.com/lemduc/arcade-agent/pull/17), [polyglot parsing with Java/Kotlin graph linking (#19)](https://github.com/lemduc/arcade-agent/pull/19), and [consistent JVM test-source exclusion (#32)](https://github.com/lemduc/arcade-agent/pull/32).
-- **Analysis & performance:** [async analysis pipeline (#16)](https://github.com/lemduc/arcade-agent/pull/16), [Python reference extraction optimization (#14)](https://github.com/lemduc/arcade-agent/pull/14), and [indexed component dependency lookups (#15)](https://github.com/lemduc/arcade-agent/pull/15).
-- **CI & reporting:** [release-packaged analysis action (#11)](https://github.com/lemduc/arcade-agent/pull/11), [actionable architecture drift reports (#30)](https://github.com/lemduc/arcade-agent/pull/30), and [consistent Mermaid comparison labels (#22)](https://github.com/lemduc/arcade-agent/pull/22).
-
-[All my Arcade Agent PRs](https://github.com/lemduc/arcade-agent/pulls?q=is%3Apr+author%3Atuannx) · [Merged contributions](https://github.com/lemduc/arcade-agent/pulls?q=is%3Apr+author%3Atuannx+is%3Amerged)
-
-### More merged contributions
-
-| Project | Selected work |
-| --- | --- |
-| [Embabel Agent](https://github.com/embabel/embabel-agent) | [MCP protocol E2E coverage (#1832)](https://github.com/embabel/embabel-agent/pull/1832), [RAG ordering, metadata, and latency logging (#1812)](https://github.com/embabel/embabel-agent/pull/1812), [utility test coverage (#1823)](https://github.com/embabel/embabel-agent/pull/1823) |
-| [Floci](https://github.com/floci-io/floci) | [Terraform RDS and RabbitMQ compatibility (#1951)](https://github.com/floci-io/floci/pull/1951) |
-| [Underthesea](https://github.com/undertheseanlp/underthesea) | [Lazy-load the translation backend (#1053)](https://github.com/undertheseanlp/underthesea/pull/1053) |
-| [Elasticsearch Vietnamese Analysis](https://github.com/duydo/elasticsearch-analysis-vietnamese) | [Advisory Arcade architecture analysis in CI (#168)](https://github.com/duydo/elasticsearch-analysis-vietnamese/pull/168) |
-| [Marinade Finance](https://github.com/marinade-finance) | [Validator/stake listing in the TypeScript SDK (#3)](https://github.com/marinade-finance/marinade-ts-sdk/pull/3) and [validator stake listing in the CLI (#15)](https://github.com/marinade-finance/marinade-ts-cli/pull/15), contributed in 2021 |
-
-[Browse my public pull requests](https://github.com/pulls?q=is%3Apr+author%3Atuannx+is%3Apublic)
-
-## Project spotlight
-
-### [Spring Boot Multi-Region HA](https://github.com/tuannx/spring-boot-multi-region-ha)
-
-A local development stack for exploring AWS multi-region high availability with Spring Boot, Docker Compose, an Aurora Global Database mock, and AWS JDBC Driver failover.
-
-## Exploring
-
-These are ongoing proposals, not shipped upstream capabilities:
-
-- **Arcade Agent:** [TypeScript workspace import resolution and qualified graph metrics (#42, draft)](https://github.com/lemduc/arcade-agent/pull/42); [Kotlin cohesion false-positive reproduction (#44, draft)](https://github.com/lemduc/arcade-agent/pull/44), with an intentionally failing regression test rather than a claimed detector fix.
-- **Floci:** [optional embedded SQS for JVM integration tests (#3617, draft)](https://github.com/floci-io/floci/pull/3617), reusing the SQS engine and handlers with isolated in-memory state. Test-focused; not a production runtime or a replacement for Docker/standalone.
-- **Dataverse:** [REST Assured regression test for bounding-box precision (#12698, draft)](https://github.com/IQSS/dataverse/pull/12698).
-
-## How I contribute
-
-- Reproduce the problem and make the expected behavior explicit.
-- Keep patches focused, with regression tests and clear compatibility boundaries.
-- Validate integrations end to end and document what remains unverified.
-
-Interested in architecture analysis, JVM testing, AWS compatibility, or AI agent tooling? Collaborate with me through the issues and pull requests linked above.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-tonynguyenit-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tonynguyenit/)
+[![Public PRs](https://img.shields.io/badge/GitHub-public%20pull%20requests-181717?logo=github)](https://github.com/pulls?q=is%3Apr+author%3Atuannx+is%3Apublic)
 
 ---
 
-<sub>Layout inspired by [DenverCoder1's profile](https://github.com/DenverCoder1/DenverCoder1), adapted into a lightweight, contribution-first README. Contribution statuses last checked on September 14, 2026.</sub>
+## Best projects
+
+### Multi-region disaster recovery on AWS
+**John Deere · 2026** · Team program. I implemented the equipment platform part.<br>
+**Shipped:** three services running in a second AWS region.
+
+- Aurora Global Database with AWS JDBC Wrapper failover, switchover scripts and AWS FIS fault tests
+- Cross-region SQS listener takeover in a shared library, used by two services
+- Valkey global datastore, Route 53 health checks, blue/green deploys with rollback gates
+
+**Links:** [Public failover lab](https://github.com/tuannx/spring-boot-multi-region-ha) · [Live architecture map](https://tuannx.github.io/spring-boot-multi-region-ha/) · [Floci #6213: Aurora via AWS JDBC Wrapper](https://github.com/floci-io/floci/pull/6213)
+
+### Faster high-traffic platform
+**John Deere · 2025–2026** · Java 21, Hibernate, Valkey, Datadog.<br>
+**Shipped:** lower API p95 latency, CPU per request and memory use, while traffic grew.
+
+- Statement-count test harness; removed redundant `DISTINCT` and Hibernate hydration
+- Authorization cache on Valkey, per-type `JAXBContext` cache, JVM heap sized from task memory
+- All services moved to JDK 21, JUnit 5 and AWS SDK v2
+
+**Links:** employer code is private. Related public work: [CoreNLP #1530: O(N²) copy removed](https://github.com/stanfordnlp/CoreNLP/pull/1530)
+
+### Arcade Agent
+**Architecture analysis library and MCP server for AI coding agents.**<br>
+**Shipped:** 23 merged pull requests and a GitHub Action.
+
+- Kotlin parser, polyglot parsing, async analysis pipeline
+- Architecture drift reports in CI
+
+**Links:** [Repository](https://github.com/arcade-agent/arcade-agent) · [My merged PRs](https://github.com/arcade-agent/arcade-agent/pulls?q=is%3Apr+author%3Atuannx+is%3Amerged) · [arcade-agent-action](https://github.com/tuannx/arcade-agent-action)
+
+### AI Kit Data
+**NHTSA VIN decoder at the edge, on Cloudflare Workers.**<br>
+**Shipped:** live API, drop-in compatible with NHTSA vPIC, listed in public-apis.
+
+- Decodes VINs offline; every data update is checked against the live API and NHTSA's own SQL
+- OpenAPI 3.1 docs, batch page, `llms.txt` for agents
+
+**Links:** [Live site](https://data.ai-kit.net) · [API docs](https://data.ai-kit.net/docs) · [Repository](https://github.com/AIKitLLC/nhtsa-edge-api) · [public-apis #8432](https://github.com/public-apis/public-apis/pull/8432)
+
+---
+
+## Merged upstream
+
+| Project | Pull request | What changed |
+| --- | --- | --- |
+| Apple ServiceTalk | [#3677](https://github.com/apple/servicetalk/pull/3677) | Keep demand across overlapping subscription switches |
+| Stanford CoreNLP | [#1530](https://github.com/stanfordnlp/CoreNLP/pull/1530) | Remove an O(N²) copy in `CoreLabel` and `ArrayCoreMap` |
+| CMU Fray | [#446](https://github.com/cmu-pasta/fray/pull/446) | Report replay schedule divergence |
+| Embabel Agent | [#1832](https://github.com/embabel/embabel-agent/pull/1832), [#1812](https://github.com/embabel/embabel-agent/pull/1812) | MCP end-to-end tests, RAG ordering fix |
+| Floci | [#1951](https://github.com/floci-io/floci/pull/1951), [#6213](https://github.com/floci-io/floci/pull/6213) | Terraform RDS, RabbitMQ and Aurora JDBC compatibility |
+| Underthesea | [#1053](https://github.com/undertheseanlp/underthesea/pull/1053) | Lazy-load the translation backend |
+
+---
+
+## Experience
+
+| Years | Where | Role |
+| --- | --- | --- |
+| 2021 – now | John Deere | Senior Software Engineer (via Volt, 2021–2022) |
+| 2011 – 2017 | FTL JSC | Deputy CEO and tech lead · high-transaction services for Mobifone |
+| 2008 – 2020 | FTL, eXo Platform, Tuan123, Xvolve | Full-stack developer and tech lead |
+
+**Stack:** Java 21 · Spring Boot · Hibernate · AWS (Aurora, SQS, SNS, ECS, Route 53) · Terraform · Datadog · OpenTelemetry · React · TypeScript · MCP
+
+**Education:** M.S. Computer Science, Maharishi University of Management (2022) · B.S., Hanoi University of Technology (2010)
