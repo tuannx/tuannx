@@ -1,0 +1,115 @@
+name: Build and deploy
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # Browser-only build: onnxruntime-node is transitive and its native binary
+      # postinstall can time out; the app uses onnxruntime-web in the browser.
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npm run evaluate
+      - run: npm run evaluate:corpus
+      - name: Upload synthetic retrieval evaluation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retrieval-evaluation-${{ github.run_id }}
+          path: artifacts/retrieval-corpus/report.json
+          if-no-files-found: ignore
+      - run: npm run build
+      - name: Browser smoke · desktop/mobile and offline fallback
+        run: node scripts/browser-smoke.mjs
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-smoke-${{ github.run_id }}
+          path: artifacts/browser-smoke/
+          if-no-files-found: ignore
+      # Preview/PR builds are tested but never published to the public portfolio.
+      - if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  wasm-evaluation:
+    # On-demand, real-model coverage for labeled synthetic cases. Not run on
+    # unrelated PRs: third-party model downloads can be large or unavailable.
+    if: github.event_name == 'pull_request' && contains(github.event.pull_request.title, '[WASM benchmark]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - name: Real Chromium WASM relevance and latency (opt-in)
+        run: RUN_WASM_EVAL=1 WASM_EVAL_PER_CATEGORY=100 node scripts/browser-smoke.mjs
+        timeout-minutes: 12
+      - name: Upload real WASM evidence, including partial results on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-relevance-${{ github.run_id }}
+          path: artifacts/browser-smoke/
+          if-no-files-found: ignore
+  macos-smoke:
+    # Opt-in cross-platform smoke on a GitHub-hosted Apple Silicon Mac.
+    # This is NOT a test on the owner's local Mac or in Safari/WebKit.
+    if: github.event_name == 'pull_request' && contains(github.event.pull_request.title, '[macOS smoke]')
+    runs-on: macos-15
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npm run build
+      - name: Apple Silicon Chromium · responsive, keyboard and offline fallback
+        run: node scripts/browser-smoke.mjs
+      - name: Upload macOS browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-browser-smoke-${{ github.run_id }}
+          path: artifacts/browser-smoke/
+          if-no-files-found: ignore
+  deploy:
+    # Even manual workflow_dispatch runs from feature branches must not deploy.
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
