@@ -1,0 +1,492 @@
+{
+  "candidate": {
+    "name": "Tony Nguyen",
+    "headline": "Senior Software Engineer · Java and AWS reliability · AI agent tooling",
+    "headlineEvidenceIds": [
+      "linkedin",
+      "mrha",
+      "arcade-prs"
+    ],
+    "location": "Iowa, USA",
+    "summary": "I build reliable Java and AWS systems at scale, and tools for AI coding agents. My best work is multi-region disaster recovery and performance on a high-traffic platform, plus merged open source in ServiceTalk, CoreNLP and Arcade Agent.",
+    "summaryEvidenceIds": [
+      "linkedin",
+      "mrha",
+      "servicetalk",
+      "corenlp",
+      "arcade-prs"
+    ],
+    "availability": "Reach out on LinkedIn",
+    "contact": "https://www.linkedin.com/in/tonynguyenit/"
+  },
+  "skills": [
+    {
+      "name": "Java",
+      "category": "Languages",
+      "evidenceIds": [
+        "servicetalk",
+        "corenlp",
+        "mrha"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "category": "Languages",
+      "evidenceIds": [
+        "nhtsa"
+      ]
+    },
+    {
+      "name": "Python",
+      "category": "Languages",
+      "evidenceIds": [
+        "arcade-prs"
+      ]
+    },
+    {
+      "name": "Spring Boot",
+      "category": "Frameworks",
+      "evidenceIds": [
+        "mrha"
+      ]
+    },
+    {
+      "name": "AWS Aurora Global Database",
+      "category": "Cloud",
+      "evidenceIds": [
+        "mrha",
+        "floci-6213"
+      ]
+    },
+    {
+      "name": "AWS JDBC Wrapper failover",
+      "category": "Cloud",
+      "evidenceIds": [
+        "mrha",
+        "floci-6213"
+      ]
+    },
+    {
+      "name": "Valkey",
+      "category": "Cloud",
+      "evidenceIds": [
+        "mrha"
+      ]
+    },
+    {
+      "name": "Terraform",
+      "category": "Cloud",
+      "evidenceIds": [
+        "floci-1951"
+      ]
+    },
+    {
+      "name": "Cloudflare Workers",
+      "category": "Cloud",
+      "evidenceIds": [
+        "nhtsa",
+        "nhtsa-site"
+      ]
+    },
+    {
+      "name": "Concurrency",
+      "category": "Practice",
+      "evidenceIds": [
+        "servicetalk",
+        "fray"
+      ]
+    },
+    {
+      "name": "Performance",
+      "category": "Practice",
+      "evidenceIds": [
+        "corenlp"
+      ]
+    },
+    {
+      "name": "Multi-region high availability",
+      "category": "Practice",
+      "evidenceIds": [
+        "mrha",
+        "mrha-map"
+      ]
+    },
+    {
+      "name": "MCP and agent tooling",
+      "category": "AI",
+      "evidenceIds": [
+        "arcade",
+        "embabel-1832"
+      ]
+    },
+    {
+      "name": "Software architecture analysis",
+      "category": "AI",
+      "evidenceIds": [
+        "arcade",
+        "arcade-action"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "dr",
+      "name": "Multi-region disaster recovery on AWS (John Deere, 2026)",
+      "role": "Engineer; implemented the equipment platform part of a team program",
+      "summary": "Aurora Global Database with AWS Advanced JDBC Wrapper failover, switchover scripts and AWS FIS fault tests. Cross-region SQS listener takeover in a shared library used by two services. Transaction-aware failover retry for safe reads. Valkey global datastore, Route 53 health checks and latency routing, blue/green deploys with rollback gates. Three services run in a second AWS region. Employer code is private; the public lab shows the same pattern.",
+      "stack": [
+        "Java",
+        "Spring Boot",
+        "AWS Aurora",
+        "SQS",
+        "Valkey",
+        "Route 53",
+        "AWS FIS",
+        "Terraform"
+      ],
+      "evidenceIds": [
+        "linkedin",
+        "mrha",
+        "mrha-map",
+        "floci-6213"
+      ]
+    },
+    {
+      "id": "perf",
+      "name": "Faster platform for connected machines (John Deere, 2025-2026)",
+      "role": "Senior Software Engineer",
+      "summary": "Platform for connected machines. Added a statement-count test harness, removed redundant queries, moved the authorization cache to Valkey, cached JAXBContext per type (about 15% less CPU at fix time), and sized the JVM heap from task memory. From Jul to Oct 2026, API p95 latency was about 43% lower while traffic grew about 34%, CPU per request about 50% lower, and message service memory use went from 34% to 15% with 23% fewer tasks. These gains coincided with the changes; it is monthly data, not an A/B test. In 2024 I built the satellite registration flow for the Deere x SpaceX Starlink integration. Employer code and dashboards are private.",
+      "stack": [
+        "Java 21",
+        "Hibernate",
+        "Valkey",
+        "Datadog",
+        "OpenTelemetry"
+      ],
+      "evidenceIds": [
+        "linkedin",
+        "deere-connectivity",
+        "deere-spacex"
+      ]
+    },
+    {
+      "id": "arcade",
+      "name": "Arcade Agent",
+      "role": "Contributor (23 merged pull requests) and author of its GitHub Action",
+      "summary": "Architecture analysis library and MCP server for coding agents. My work includes the Kotlin parser, polyglot parsing, an async analysis pipeline and CI drift reports.",
+      "stack": [
+        "Python",
+        "MCP",
+        "GitHub Actions"
+      ],
+      "evidenceIds": [
+        "arcade",
+        "arcade-prs",
+        "arcade-action"
+      ]
+    },
+    {
+      "id": "nhtsa",
+      "name": "AI Kit Data (nhtsa-edge-api)",
+      "role": "Builder",
+      "summary": "Offline VIN decoder on Cloudflare Workers, drop-in compatible with the NHTSA vPIC API. Each data update is checked against the live API and NHTSA's own SQL. Live and listed in public-apis.",
+      "stack": [
+        "TypeScript",
+        "Cloudflare Workers",
+        "PostgreSQL"
+      ],
+      "evidenceIds": [
+        "nhtsa",
+        "nhtsa-site",
+        "public-apis"
+      ]
+    },
+    {
+      "id": "oss",
+      "name": "Upstream open source fixes",
+      "role": "Contributor",
+      "summary": "Merged fixes in Apple ServiceTalk (demand across overlapping subscription switches), Stanford CoreNLP (remove an O(N^2) copy), CMU Fray (replay schedule divergence), Embabel Agent (MCP tests, RAG ordering), Floci and Underthesea.",
+      "stack": [
+        "Java",
+        "Python"
+      ],
+      "evidenceIds": [
+        "servicetalk",
+        "corenlp",
+        "fray",
+        "embabel-1832",
+        "embabel-1812",
+        "floci-1951",
+        "underthesea",
+        "public-prs"
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "period": "2022 — Present",
+      "title": "Senior Software Engineer",
+      "organization": "John Deere",
+      "detail": "Equipment management platform: multi-region disaster recovery, performance, JDK 21 upgrades, internal MCP tooling.",
+      "evidenceIds": [
+        "linkedin"
+      ]
+    },
+    {
+      "period": "2021 — 2022",
+      "title": "Software Engineer III (via Volt)",
+      "organization": "John Deere",
+      "detail": "Device and telematics APIs and message processors.",
+      "evidenceIds": [
+        "linkedin"
+      ]
+    },
+    {
+      "period": "2011 — 2017",
+      "title": "Deputy CEO and Technical Leader",
+      "organization": "FTL JSC",
+      "detail": "High-transaction services for Mobifone.",
+      "evidenceIds": [
+        "linkedin"
+      ]
+    },
+    {
+      "period": "2008 — 2020",
+      "title": "Full-stack developer and technical leader",
+      "organization": "FTL, eXo Platform, Tuan123, Xvolve",
+      "detail": "Banking, games, real estate and web products.",
+      "evidenceIds": [
+        "linkedin"
+      ]
+    },
+    {
+      "period": "2010 — 2022",
+      "title": "B.S. Hanoi University of Technology (2010); M.S. Computer Science, Maharishi University of Management (2022)",
+      "organization": "Education",
+      "detail": "Computer Science.",
+      "evidenceIds": [
+        "linkedin"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "linkedin",
+      "label": "LinkedIn profile · roles and dates (self-reported)",
+      "url": "https://www.linkedin.com/in/tonynguyenit/"
+    },
+    {
+      "id": "public-prs",
+      "label": "All public pull requests on GitHub",
+      "url": "https://github.com/pulls?q=is%3Apr+author%3Atuannx+is%3Apublic"
+    },
+    {
+      "id": "mrha",
+      "label": "Spring Boot Multi-Region HA · public failover lab",
+      "url": "https://github.com/tuannx/spring-boot-multi-region-ha"
+    },
+    {
+      "id": "mrha-map",
+      "label": "Spring Boot Multi-Region HA · live architecture map",
+      "url": "https://tuannx.github.io/spring-boot-multi-region-ha/"
+    },
+    {
+      "id": "floci-6213",
+      "label": "Floci PR #6213 · Aurora PostgreSQL through the AWS JDBC Wrapper (merged)",
+      "url": "https://github.com/floci-io/floci/pull/6213"
+    },
+    {
+      "id": "floci-1951",
+      "label": "Floci PR #1951 · Terraform RDS and RabbitMQ compatibility (merged)",
+      "url": "https://github.com/floci-io/floci/pull/1951"
+    },
+    {
+      "id": "arcade",
+      "label": "Arcade Agent repository",
+      "url": "https://github.com/arcade-agent/arcade-agent"
+    },
+    {
+      "id": "arcade-prs",
+      "label": "Arcade Agent · my merged pull requests",
+      "url": "https://github.com/arcade-agent/arcade-agent/pulls?q=is%3Apr+author%3Atuannx+is%3Amerged"
+    },
+    {
+      "id": "arcade-action",
+      "label": "arcade-agent-action · GitHub Action",
+      "url": "https://github.com/tuannx/arcade-agent-action"
+    },
+    {
+      "id": "nhtsa",
+      "label": "nhtsa-edge-api repository",
+      "url": "https://github.com/AIKitLLC/nhtsa-edge-api"
+    },
+    {
+      "id": "nhtsa-site",
+      "label": "AI Kit Data · live site",
+      "url": "https://data.ai-kit.net"
+    },
+    {
+      "id": "public-apis",
+      "label": "public-apis PR #8432 · NHTSA Edge VIN Decoder listed (merged)",
+      "url": "https://github.com/public-apis/public-apis/pull/8432"
+    },
+    {
+      "id": "servicetalk",
+      "label": "Apple ServiceTalk PR #3677 (merged)",
+      "url": "https://github.com/apple/servicetalk/pull/3677"
+    },
+    {
+      "id": "corenlp",
+      "label": "Stanford CoreNLP PR #1530 (merged)",
+      "url": "https://github.com/stanfordnlp/CoreNLP/pull/1530"
+    },
+    {
+      "id": "fray",
+      "label": "CMU Fray PR #446 (merged)",
+      "url": "https://github.com/cmu-pasta/fray/pull/446"
+    },
+    {
+      "id": "embabel-1832",
+      "label": "Embabel Agent PR #1832 · MCP end-to-end tests (merged)",
+      "url": "https://github.com/embabel/embabel-agent/pull/1832"
+    },
+    {
+      "id": "embabel-1812",
+      "label": "Embabel Agent PR #1812 · RAG ordering fix (merged)",
+      "url": "https://github.com/embabel/embabel-agent/pull/1812"
+    },
+    {
+      "id": "underthesea",
+      "label": "Underthesea PR #1053 (merged)",
+      "url": "https://github.com/undertheseanlp/underthesea/pull/1053"
+    },
+    {
+      "id": "deere-connectivity",
+      "label": "John Deere · Connectivity and Digitalization (Operations Center as digital twin, 2026 goals)",
+      "url": "https://www.deere.com/en-us/our-company/technology-and-innovation/connectivity-and-digitalization"
+    },
+    {
+      "id": "deere-spacex",
+      "label": "John Deere news · SpaceX Starlink partnership (Jan 16, 2024)",
+      "url": "https://www.deere.com/en-us/john-deere-news/john-deere-partnership-with-spacex"
+    }
+  ],
+  "faq": [
+    {
+      "id": "dr",
+      "questions": [
+        "Have you built multi-region disaster recovery?",
+        "What disaster recovery work have you done?",
+        "Do you have AWS high availability experience?"
+      ],
+      "answer": "At John Deere (2026), in a team program, I implemented the equipment platform part: Aurora Global Database with AWS JDBC Wrapper failover, FIS fault tests, cross-region SQS listener takeover, and Route 53 routing. Three services run in a second region. The employer code is private; my public lab shows the same failover pattern.",
+      "evidenceIds": [
+        "linkedin",
+        "mrha",
+        "mrha-map",
+        "floci-6213"
+      ],
+      "followUp": "Is your target active-passive or active-active, and what RTO do you need?"
+    },
+    {
+      "id": "perf",
+      "questions": [
+        "What performance work have you done?",
+        "Have you improved latency at scale?"
+      ],
+      "answer": "I added a statement-count test harness, removed redundant queries, moved a cache to Valkey and fixed JVM heap sizing. From Jul to Oct 2026, API p95 latency was about 43% lower while traffic grew about 34%, and CPU per request was about 50% lower. The gains coincided with these changes; it is monthly data, not an A/B test. Dashboards are private.",
+      "evidenceIds": [
+        "linkedin"
+      ],
+      "followUp": "Is your bottleneck the database, the JVM, or the network?"
+    },
+    {
+      "id": "ai",
+      "questions": [
+        "What AI agent tooling have you built?",
+        "Do you have MCP experience?"
+      ],
+      "answer": "I have 23 merged pull requests in Arcade Agent, an architecture analysis library and MCP server, and I built its GitHub Action. I also added MCP end-to-end tests to Embabel Agent.",
+      "evidenceIds": [
+        "arcade-prs",
+        "arcade-action",
+        "embabel-1832"
+      ],
+      "followUp": "Are you building agents, or tools that agents use?"
+    },
+    {
+      "id": "oss",
+      "questions": [
+        "What open source have you contributed to?",
+        "Show me your upstream pull requests."
+      ],
+      "answer": "Merged work includes Apple ServiceTalk #3677, Stanford CoreNLP #1530, CMU Fray #446, Embabel Agent, Floci and Underthesea.",
+      "evidenceIds": [
+        "servicetalk",
+        "corenlp",
+        "fray",
+        "embabel-1812",
+        "floci-1951",
+        "underthesea",
+        "public-prs"
+      ],
+      "followUp": "Which of these is closest to your stack?"
+    },
+    {
+      "id": "java",
+      "questions": [
+        "What Java experience do you have?",
+        "Have you designed scalable Java systems?"
+      ],
+      "answer": "I work in Java 21 and Spring Boot on a high-traffic platform at John Deere. Public Java work includes ServiceTalk concurrency, a CoreNLP performance fix and the multi-region failover lab.",
+      "evidenceIds": [
+        "linkedin",
+        "servicetalk",
+        "corenlp",
+        "mrha"
+      ],
+      "followUp": "Which Java version and framework does your team use?"
+    },
+    {
+      "id": "edge",
+      "questions": [
+        "Have you shipped a product on Cloudflare?",
+        "Do you have serverless or edge experience?"
+      ],
+      "answer": "AI Kit Data is an offline VIN decoder on Cloudflare Workers, drop-in compatible with the NHTSA vPIC API and checked against NHTSA data on each update. It is live and listed in public-apis.",
+      "evidenceIds": [
+        "nhtsa",
+        "nhtsa-site",
+        "public-apis"
+      ],
+      "followUp": "Are you running on Cloudflare, AWS Lambda, or containers?"
+    },
+    {
+      "id": "leadership",
+      "questions": [
+        "Have you led a technical team?",
+        "Do you have leadership experience?"
+      ],
+      "answer": "I was Deputy CEO and technical leader at FTL JSC from 2011 to 2017, delivering high-transaction services for Mobifone.",
+      "evidenceIds": [
+        "linkedin"
+      ],
+      "followUp": "What kind of technical leadership does the role need?"
+    },
+    {
+      "id": "deere-products",
+      "questions": [
+        "What products does your work at John Deere support?",
+        "Do you work on connected machines?",
+        "What is the digital twin work?"
+      ],
+      "answer": "I work on the equipment platform for connected machines at John Deere. Deere publicly describes Operations Center as the digital twin of a farm, with a goal of 1.5M connected machines by 2026. In 2024 I built the satellite registration flow for the Deere x SpaceX Starlink integration; Deere announced its SpaceX Starlink partnership in January 2024. Employer code is private.",
+      "evidenceIds": [
+        "linkedin",
+        "deere-connectivity",
+        "deere-spacex"
+      ],
+      "followUp": "Is your product connected hardware, cloud data, or both?"
+    }
+  ]
+}
