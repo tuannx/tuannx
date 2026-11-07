@@ -2,7 +2,10 @@
 
 **Senior Software Engineer** · Java · AWS · reliable systems at scale · tools for AI coding agents
 
+**Worked with:** John Deere · AWS · SpaceX Starlink (Deere partnership) · Mobifone · open source at Apple, Stanford and CMU
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-tonynguyenit-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tonynguyenit/)
+[![Interactive CV](https://img.shields.io/badge/Interactive%20CV-ask%20my%20profile-2EA44F?logo=githubpages&logoColor=white)](https://tuannx.github.io/tuannx/)
 [![Public PRs](https://img.shields.io/badge/GitHub-public%20pull%20requests-181717?logo=github)](https://github.com/pulls?q=is%3Apr+author%3Atuannx+is%3Apublic)
 
 ---
@@ -10,7 +13,7 @@
 ## Best projects
 
 ### Multi-region disaster recovery on AWS
-**John Deere · 2026** · Team program. I implemented the equipment platform part.<br>
+**John Deere · 2026** · Team program; I built the equipment platform part.<br>
 **Shipped:** three services running in a second AWS region.
 
 - Aurora Global Database with AWS JDBC Wrapper failover, switchover scripts and AWS FIS fault tests
@@ -19,15 +22,16 @@
 
 **Links:** [Public failover lab](https://github.com/tuannx/spring-boot-multi-region-ha) · [Live architecture map](https://tuannx.github.io/spring-boot-multi-region-ha/) · [Floci #6213: Aurora via AWS JDBC Wrapper](https://github.com/floci-io/floci/pull/6213)
 
-### Faster high-traffic platform
+### Faster platform for connected machines
 **John Deere · 2025–2026** · Java 21, Hibernate, Valkey, Datadog.<br>
-**Shipped:** lower API p95 latency, CPU per request and memory use, while traffic grew.
+**Shipped (Jul to Oct 2026):** API p95 latency about 43% lower while traffic grew about 34%. CPU per request about 50% lower. Message service memory use 34% → 15%, with 23% fewer tasks. Gains coincided with the changes below (monthly data).
 
 - Statement-count test harness; removed redundant `DISTINCT` and Hibernate hydration
-- Authorization cache on Valkey, per-type `JAXBContext` cache, JVM heap sized from task memory
+- Authorization cache on Valkey, per-type `JAXBContext` cache (about 15% less CPU at fix time), JVM heap sized from task memory
 - All services moved to JDK 21, JUnit 5 and AWS SDK v2
+- 2024: Deere x SpaceX Starlink integration, the satellite registration flow for connected machines
 
-**Links:** employer code is private. Related public work: [CoreNLP #1530: O(N²) copy removed](https://github.com/stanfordnlp/CoreNLP/pull/1530)
+**Public context** (employer code is private): Deere calls [Operations Center "the digital twin of a farm"](https://www.deere.com/en-us/our-company/technology-and-innovation/connectivity-and-digitalization) and aims for 1.5M connected machines and 500M engaged acres by 2026 · [Deere and SpaceX Starlink partnership (2024)](https://www.deere.com/en-us/john-deere-news/john-deere-partnership-with-spacex)
 
 ### Arcade Agent
 **Architecture analysis library and MCP server for AI coding agents.**<br>
@@ -68,7 +72,7 @@
 | --- | --- | --- |
 | 2021 – now | John Deere | Senior Software Engineer (via Volt, 2021–2022) |
 | 2011 – 2017 | FTL JSC | Deputy CEO and tech lead · high-transaction services for Mobifone |
-| 2008 – 2020 | FTL, eXo Platform, Tuan123, Xvolve | Full-stack developer and tech lead |
+| 2008 – 2020 | FTL, eXo Platform, Tuan123, Xvolve | Full-stack and tech lead |
 
 **Stack:** Java 21 · Spring Boot · Hibernate · AWS (Aurora, SQS, SNS, ECS, Route 53) · Terraform · Datadog · OpenTelemetry · React · TypeScript · MCP
 
