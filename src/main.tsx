@@ -9,9 +9,13 @@ import { JobMatchPanel } from './JobMatchPanel';
 import { PerformancePanel } from './PerformancePanel';
 import { CandidateStudio } from './CandidateStudio';
 import './style.css';
+import './print.css';
 
 const profile = validateProfile(rawProfile);
 const isDemoProfile = isFictionalSampleProfile(profile.candidate);
+// The contact can be a public profile link (e.g. LinkedIn) or an email address.
+const contactIsLink = /^https:\/\//i.test(profile.candidate.contact);
+const contactHref = contactIsLink ? profile.candidate.contact : `mailto:${profile.candidate.contact}`;
 const prompts = profile.faq.flatMap(entry => entry.questions.slice(0, 1)).slice(0, 3);
 const setupPrompt = "Build my portfolio using https://github.com/tuannx/open-career-agent. Ask for my CV and public links. Use only approved public facts, don't invent details, test the site, and ask me before publishing.";
 type Message = { id: number; question?: string; answer: Answer; label?: string; pending?: boolean; modelStatus?: string };
@@ -209,7 +213,7 @@ function App() {
     : wasmState === 'loading' ? 'LOADING' : modelState === 'downloading' ? 'DOWNLOADING' : 'OFF';
   return <>
     <a className="skip-link" href="#conversation" onClick={event => { event.preventDefault(); focusChat(); }}>Skip to interview chat</a>
-    <header className="topbar"><a className="brand" href="#top"><span className="brand-mark">✳</span>{profile.candidate.name}</a><nav aria-label="Main navigation"><a href="#conversation">Interview</a><a href="#work">Projects</a><a href="#experience">Experience</a></nav><a className="top-contact" href={`mailto:${profile.candidate.contact}`}>Contact candidate <span aria-hidden="true">↗</span></a></header>
+    <header className="topbar"><a className="brand" href="#top"><span className="brand-mark">✳</span>{profile.candidate.name}</a><nav aria-label="Main navigation"><a href="#conversation">Interview</a><a href="#work">Projects</a><a href="#experience">Experience</a></nav><a className="top-contact" href={contactHref} {...(contactIsLink ? { target: '_blank', rel: 'noreferrer' } : {})}>Contact candidate <span aria-hidden="true">↗</span></a></header>
     <main id="top">
       <section className="hero shell" id="about">
         <div className="hero-copy">
