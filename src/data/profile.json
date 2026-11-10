@@ -155,7 +155,7 @@
       "id": "perf",
       "name": "Faster platform for connected machines (John Deere, 2025-2026)",
       "role": "Senior Software Engineer",
-      "summary": "Platform for connected machines. Added a statement-count test harness, removed redundant queries, moved the authorization cache to Valkey, cached JAXBContext per type (about 15% less CPU at fix time), and sized the JVM heap from task memory. From Jul to Oct 2026, API p95 latency was about 43% lower while traffic grew about 34%, CPU per request about 50% lower, and message service memory use went from 34% to 15% with 23% fewer tasks. These gains coincided with the changes; it is monthly data, not an A/B test. In 2024 I built the satellite registration flow for the Deere x SpaceX Starlink integration. Employer code and dashboards are private.",
+      "summary": "Platform for connected machines. I made performance a continuous loop: measure with OpenTelemetry and Datadog, fix the biggest cost, then add a test so it stays fixed. From Jul to Oct 2026, API p95 latency was about 43% lower while traffic grew about 34%. These gains coincided with the changes; it is monthly data, not an A/B test. In 2024 I built the satellite registration flow for the Deere x SpaceX Starlink integration. Employer code and dashboards are private.",
       "stack": [
         "Java 21",
         "Hibernate",
@@ -167,6 +167,16 @@
         "linkedin",
         "deere-connectivity",
         "deere-spacex"
+      ],
+      "highlights": [
+        "OpenTelemetry traces show where each API request spends its time, across database, cache and queue calls.",
+        "Datadog Database Monitoring shows which queries cost the most, so each cycle starts with the biggest cost.",
+        "Each fix gets a test so it cannot come back, then I check the trend the next month.",
+        "Statement-count test harness: a test fails when an endpoint runs more SQL statements than its budget.",
+        "Moved the hot authorization cache to Valkey, shared across instances instead of one per JVM.",
+        "Cached one JAXBContext per type: about 15% less CPU at fix time.",
+        "Sized the JVM heap from the task's memory limit: message service memory use went from 34% to 15%, with 23% fewer tasks.",
+        "CPU per request was about 50% lower from Jul to Oct 2026, over the same months as the p95 drop."
       ]
     },
     {
@@ -399,6 +409,23 @@
         "linkedin"
       ],
       "followUp": "Is your bottleneck the database, the JVM, or the network?"
+    },
+    {
+      "id": "observability",
+      "questions": [
+        "How do you use observability to improve a system?",
+        "Have you used OpenTelemetry or Datadog?",
+        "How do you find and fix performance problems?",
+        "Have you used OpenTelemetry?",
+        "Have you used Datadog?",
+        "How do you use Datadog to improve performance?",
+        "How do you prevent performance regressions?"
+      ],
+      "answer": "I treat performance as a loop, not a one-time fix. OpenTelemetry traces show where each API request spends its time, and Datadog Database Monitoring shows which queries cost the most. Each cycle I fix the biggest cost, add a test so it cannot come back (for example a statement-count budget per endpoint), and check the trend the next month. On the John Deere connected-machines platform, API p95 was about 43% lower from Jul to Oct 2026 while traffic grew about 34%. The gains coincided with the changes; it is monthly data, not an A/B test. Dashboards are private.",
+      "evidenceIds": [
+        "linkedin"
+      ],
+      "followUp": "Do you want to hear how I pick what to fix first, or how the guard tests work?"
     },
     {
       "id": "ai",
