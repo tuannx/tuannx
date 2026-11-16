@@ -16,7 +16,7 @@
       "corenlp",
       "arcade-prs"
     ],
-    "availability": "Reach out on LinkedIn",
+    "availability": "Open to senior roles at large tech companies · willing to relocate within the US · reach out on LinkedIn",
     "contact": "https://www.linkedin.com/in/tonynguyenit/"
   },
   "skills": [
@@ -215,7 +215,7 @@
       "id": "oss",
       "name": "Upstream open source fixes",
       "role": "Contributor",
-      "summary": "Merged fixes in Apple ServiceTalk (demand across overlapping subscription switches), Stanford CoreNLP (remove an O(N^2) copy), CMU Fray (replay schedule divergence), Embabel Agent (MCP tests, RAG ordering), Floci and Underthesea.",
+      "summary": "Merged fixes in Apple ServiceTalk (demand across overlapping subscription switches), Stanford CoreNLP (remove an O(N^2) copy), CMU Fray (replay schedule divergence), Embabel Agent (MCP tests, RAG ordering), Floci, Underthesea and Rul (never run silently on synthetic data).",
       "stack": [
         "Java",
         "Python"
@@ -224,6 +224,7 @@
         "servicetalk",
         "corenlp",
         "fray",
+        "rul-9",
         "embabel-1832",
         "embabel-1812",
         "floci-1951",
@@ -356,6 +357,11 @@
       "url": "https://github.com/cmu-pasta/fray/pull/446"
     },
     {
+      "id": "rul-9",
+      "label": "Rul PR #9 · never run silently on synthetic data, disclose MCP data source (merged)",
+      "url": "https://github.com/rul-lang/rul/pull/9"
+    },
+    {
       "id": "embabel-1832",
       "label": "Embabel Agent PR #1832 · MCP end-to-end tests (merged)",
       "url": "https://github.com/embabel/embabel-agent/pull/1832"
@@ -447,11 +453,12 @@
         "What open source have you contributed to?",
         "Show me your upstream pull requests."
       ],
-      "answer": "Merged work includes Apple ServiceTalk #3677, Stanford CoreNLP #1530, CMU Fray #446, Embabel Agent, Floci and Underthesea.",
+      "answer": "Merged work includes Apple ServiceTalk #3677, Stanford CoreNLP #1530, CMU Fray #446, Embabel Agent, Floci, Underthesea and Rul #9.",
       "evidenceIds": [
         "servicetalk",
         "corenlp",
         "fray",
+        "rul-9",
         "embabel-1812",
         "floci-1951",
         "underthesea",
