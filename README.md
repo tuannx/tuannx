@@ -4,6 +4,8 @@
 
 **Worked with:** John Deere · AWS · SpaceX Starlink (Deere partnership) · Mobifone · open source at Apple, Stanford and CMU
 
+**Open to:** senior roles at large tech companies · willing to relocate within the US
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-tonynguyenit-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tonynguyenit/)
 [![Interactive CV](https://img.shields.io/badge/Interactive%20CV-ask%20my%20profile-2EA44F?logo=githubpages&logoColor=white)](https://tuannx.github.io/tuannx/)
 [![Public PRs](https://img.shields.io/badge/GitHub-public%20pull%20requests-181717?logo=github)](https://github.com/pulls?q=is%3Apr+author%3Atuannx+is%3Apublic)
@@ -60,6 +62,7 @@
 | Apple ServiceTalk | [#3677](https://github.com/apple/servicetalk/pull/3677) | Keep demand across overlapping subscription switches |
 | Stanford CoreNLP | [#1530](https://github.com/stanfordnlp/CoreNLP/pull/1530) | Remove an O(N²) copy in `CoreLabel` and `ArrayCoreMap` |
 | CMU Fray | [#446](https://github.com/cmu-pasta/fray/pull/446) | Report replay schedule divergence |
+| Rul | [#9](https://github.com/rul-lang/rul/pull/9) | Never run silently on synthetic data; disclose MCP data source |
 | Embabel Agent | [#1832](https://github.com/embabel/embabel-agent/pull/1832), [#1812](https://github.com/embabel/embabel-agent/pull/1812) | MCP end-to-end tests, RAG ordering fix |
 | Floci | [#1951](https://github.com/floci-io/floci/pull/1951), [#6213](https://github.com/floci-io/floci/pull/6213) | Terraform RDS, RabbitMQ and Aurora JDBC compatibility |
 | Underthesea | [#1053](https://github.com/undertheseanlp/underthesea/pull/1053) | Lazy-load the translation backend |
